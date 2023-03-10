@@ -17,6 +17,9 @@
 4. Generate & save bills
 5. Print bills
 6. Notifies less stock in database 
+7. Manage suppliers
+8. Manage employees
+9. Sales prediction
 ---
 ### Installation
 - Install dependencies
