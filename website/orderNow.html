@@ -14,31 +14,45 @@
 </head>
 
 <body>
-    <button type="button" class="btn btn-dark home"><a href="index.html"> HOME </a></button>
-    <div class="form-group">
-        <label for="name"> Name</label>
-        <input name="name" type="text" class="form-control" id="name" placeholder="name">
-    </div>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input name="address" type="text" class="form-control" id="address" placeholder="address">
-    </div>
-    <div class="form-group">
-        <label for="nic">NIC Number</label>
-        <input name="nic" type="text" class="form-control" id="nic" placeholder="nic">
-    </div>
-    <div class="form-group">
-        <label for="contact">Contact Number</label>
-        <input name="contact" type="text" class="form-control" id="contact" placeholder="contact">
-    </div>
-    <div>
-        <label for="caption">Add your wish list clearly in here</label>
-    </div>
-    <div class="form-floating">  
-        <textarea class="form-control" placeholder="add your wish list clearly in here" id="floatingTextarea"></textarea>
-    </div>
-      <button type="button" class="btn btn-warning cancel"> CANCEL ORDER </button>
-      <button type="button" class="btn btn-primary place">PLACE ORDER</button>
+    <section class="flex">
+        <div class="split left">
+            <div class="d-flex justify-content-end">
+                <div></div>
+                <a href="index.html"><button type="button" class="btn btn-success text-white home"> HOME</button></a>
+            </div>
+            
+        <div class="form-group">
+            <label for="name"> Name</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input name="address" type="text" class="form-control" id="address" placeholder="address">
+        </div>
+        <div class="form-group">
+            <label for="nic">NIC Number</label>
+            <input name="nic" type="text" class="form-control" id="nic" placeholder="nic">
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input name="contact" type="text" class="form-control" id="contact" placeholder="contact">
+        </div>
+        <div>
+            <label for="caption">Add your wish list clearly in here</label>
+        </div>
+        <div class="form-floating">  
+            <textarea class="form-control" placeholder="add your wish list clearly in here" id="floatingTextarea"></textarea>
+        </div>
+          <div class="d-flex justify-content-between">
+            <a href="./index.html"><button type="button" class="btn btn-warning cancel"> CANCEL ORDER </button></a>
+          <button type="button" class="btn btn-primary place">PLACE ORDER</button>
+          </div>
+        </div>
+    
+        <div class="split right">
+            
+        </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -64,10 +78,7 @@
 </body>
 <style>
     body{
-        margin: 50px;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
+        background-color: azure;
     }
     .home{
         margin-bottom: 10px;
@@ -82,5 +93,58 @@
     .place{
         margin-top: 10px;
     }
+    .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+      
+      .left {
+        margin: 40px;
+        left: 0;
+        width: 500px;
+        
+      }
+      
+      .right {
+        right: 0;
+        background-image: url(./images/mobile-payment-with-pos-terminal-vector.jpg);
+        background-repeat: no-repeat;
+        height: 100vh;
+      }
+      
+      @media only screen and (max-width: 600px) {
+        .split {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+          }
+          
+          .left {
+            margin: 40px;
+            left: 0;
+            width: 300px;
+            
+          }
+          
+          .right {
+            right: 0;
+        background-image: url(./images/mobile-payment-with-pos-terminal-vector.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        height: 0vh;
+        content-visibility: hidden;
+          }
+          
+      }
 </style>
 </html>
