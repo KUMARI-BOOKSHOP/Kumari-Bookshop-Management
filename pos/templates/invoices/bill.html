@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> KUMARI BOOKSHOOP </h1>
+    <p> No.30, Ganegama Road, Aluthgama,
+        Sri Lanka <br>
+        +94777450570
+    </p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Selling Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in bill.products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.qty }}</td>
+                <td>{{ product.selling_price }}</td>
+                <td>{{ product.quantity * product.selling_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Grand Total Amount:</td>
+                <td>{{ bill.total_amount() }}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <p><h3>Thank you & come again..</h3>></p>
+    {% endblock %}
