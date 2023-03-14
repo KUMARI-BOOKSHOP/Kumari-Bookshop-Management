@@ -1,18 +1,25 @@
-{% extends 'base.html' %}
+<head>
+    <title>KUMARI BOOKSHOP</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+</head>
 
 {% block content %}
+<div class="container">
+    <center>
     <h1> KUMARI BOOKSHOOP </h1>
     <p> No.30, Ganegama Road, Aluthgama,<br>
         Sri Lanka <br>
-        +94777450570.
+        +94777450570 / +94710132681
     </p>
     <br>
-    {% for transaction in transactions %}
-
-    {{ transaction.id }}
+    </center>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th>Transaction ID</th>
                 <th>Items Names</th>
                 <th>Quantity</th>
                 <th>Selling Price</th>
@@ -21,28 +28,31 @@
         </thead>
         <tbody>
             <tr>
-                {% for transaction_product in transaction.transaction_products %}
+                {% for transaction_product in transaction_products %}
+                <td>{{ transaction_product.trasaction_id}}</td>
                 <td>
-                   {{ transaction_product.product.name }}</li>
+                   {{ transaction_product.product.name }}
                 </td>
 
                 <td>
-                    {{ transaction_product.product_qty }}</li>
+                    {{ transaction_product.product_qty }}
                 </td>
 
                 <td>
-                    {{ transaction_product.product.selling_price }}</li>
+                    {{ transaction_product.product.selling_price }}
                     
                 </td>
 
                 <td>
-                   {{transaction_product.product_qty * transaction_product.product.selling_price}}</li>
+                   {{transaction_product.product_qty * transaction_product.product.selling_price}}
                 </td>
                 {% endfor %}
             </tr>
             
         </tbody>
     </table>
-    {% endfor %}
+<center>
     <p><h3>Thank you & come again..</h3></p>
+</center>
+    </div>
     {% endblock %}
