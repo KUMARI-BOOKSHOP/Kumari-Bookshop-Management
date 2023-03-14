@@ -37,39 +37,18 @@ def transactions_add():
 		return redirect("/transactions")
 	return render_template("transactions/form_add.html")
 
-# @bp.route('/transactions/bill', methods=["GET"])
-# def bill():
-# 	transaction_id = request.args["id"]
-# 	details = TransactionProducts.query.filter_by(id=transaction_id).first()
-    
-# 	# if details is None:
-#     # 		return jsonify({'error': 'User not found'}), 404
-	
-# 	products = [
-        
-#     ]
-# 	bill = (products)
+@bp.route("/transactions/print/bill", methods=["GET"])
+def print_bill():
+    transaction_id = request.args["id"]
+    transactions = TransactionProducts.query.filter_by(id=transaction_id).first()
+    # total_price = calculate_total_price(transactions)
 
-#     # Render the bill using an HTML template
-# 	return render_template('bill.html', bill=bill)
+    return render_template("invoices/bill.html",transactions=transactions)
 
-# def total_amount(self):
-# return sum([item['quantity'] * item['unit_price'] for item in self.items])
-# {"name": "Item 1", "quantity": 2, "unit_price": 10},
-# {"name": "Item 2", "quantity": 1, "unit_price": 20},
-# {"name": "Item 3", "quantity": 3, "unit_price": 5},
+# def calculate_total_price(transactions):
+#     total_price = 0
 
-@bp.route('/generate_bill/<int:id>')
-def generate_bill(id):
-    products = TransactionProducts.query.filter_by(id=id).all()
-    total_price = calculate_total_price(products)
-
-    return render_template('bill.html', id=id, products=products, total_price=total_price)
-
-def calculate_total_price(products):
-    total_price = 0
-
-    for product in products:
-        total_price += (product.product_qty* product.selling_price)
+#     for transactions in transactions:
+#         total_price += (transactions.product_qty* transactions.selling_price)
 		
-    return total_price
+#     return total_price
