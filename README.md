@@ -44,7 +44,7 @@
         $ run python application.py
 ```
 ---
-<h4 align="right"><b> © 2023 KUMARI BOOKSHOP MANAGEMNET SYSTEM ~Sahan Nimesha~</b>  
+<h4 align="center"><b> © 2023 KUMARI BOOKSHOP MANAGEMNET SYSTEM ~Sahan Nimesha~</b>  
 </h4>
 
 ---
