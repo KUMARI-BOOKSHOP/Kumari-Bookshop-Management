@@ -23,6 +23,7 @@
                     <li>Item name :{{ transaction_product.product.name }} | Quantity : {{ transaction_product.product_qty }} | Unit Selling Price : Rs.{{ transaction_product.product.selling_price }} | Unit Buying Price : Rs.{{ transaction_product.product.buying_price }}</li>
                     <li>Total : {{transaction_product.product_qty * transaction_product.product.selling_price}}</li>
                     <li> Profit or Loss : Rs.{{( transaction_product.product.selling_price * transaction_product.product_qty ) - (transaction_product.product.buying_price * transaction_product.product_qty)}}</li>
+                    <hr>
                 {% endfor %}
                 </ul>
             </td>
@@ -30,7 +31,7 @@
                 {{ transaction.create_on }}
             </td>
             <td>
-                <button type="submit" class="btn btn-default">Print invoice</button>
+                <button type="submit" class="btn btn-default"><a href="/transactions/print/bill?id={{ transaction.id }}">Print invoice</a></button>
             </td>
         </tr>
         {% endfor %}
