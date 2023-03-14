@@ -2,36 +2,47 @@
 
 {% block content %}
     <h1> KUMARI BOOKSHOOP </h1>
-    <p> No.30, Ganegama Road, Aluthgama,
+    <p> No.30, Ganegama Road, Aluthgama,<br>
         Sri Lanka <br>
-        +94777450570
+        +94777450570.
     </p>
-    
-    <table>
+    <br>
+    {% for transaction in transactions %}
+
+    {{ transaction.id }}
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Item</th>
+                <th>Items Names</th>
                 <th>Quantity</th>
                 <th>Selling Price</th>
                 <th>Total Price</th>
             </tr>
         </thead>
         <tbody>
-            {% for product in bill.products %}
             <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.qty }}</td>
-                <td>{{ product.selling_price }}</td>
-                <td>{{ product.quantity * product.selling_price }}</td>
+                {% for transaction_product in transaction.transaction_products %}
+                <td>
+                   {{ transaction_product.product.name }}</li>
+                </td>
+
+                <td>
+                    {{ transaction_product.product_qty }}</li>
+                </td>
+
+                <td>
+                    {{ transaction_product.product.selling_price }}</li>
+                    
+                </td>
+
+                <td>
+                   {{transaction_product.product_qty * transaction_product.product.selling_price}}</li>
+                </td>
+                {% endfor %}
             </tr>
-            {% endfor %}
+            
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">Grand Total Amount:</td>
-                <td>{{ bill.total_amount() }}</td>
-            </tr>
-        </tfoot>
     </table>
-    <p><h3>Thank you & come again..</h3>></p>
+    {% endfor %}
+    <p><h3>Thank you & come again..</h3></p>
     {% endblock %}
