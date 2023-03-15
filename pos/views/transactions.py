@@ -41,14 +41,5 @@ def transactions_add():
 def print_bill():
     transaction_id = request.args["id"]
     transactions = TransactionProducts.query.filter_by(id=transaction_id).first()
-    # total_price = calculate_total_price(transactions)
 
     return render_template("invoices/bill.html",transactions=transactions)
-
-# def calculate_total_price(transactions):
-#     total_price = 0
-
-#     for transactions in transactions:
-#         total_price += (transactions.product_qty* transactions.selling_price)
-		
-#     return total_price
