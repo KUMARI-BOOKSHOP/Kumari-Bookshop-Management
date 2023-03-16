@@ -1,60 +1,46 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, jsonify
 from pos.models.products import Products
+from pos.models.transactions import Transactions
+from pos.models.transactions_products import TransactionProducts
 from pos.models import db
 
-bp = Blueprint("products",__name__)
+bp = Blueprint("transactions",__name__)
 
-@bp.route("/")
-def index():
-	return redirect("/products")
+@bp.route("/transactions")
+def transactions_list():
+	transactions = Transactions.query.all()
+	return render_template("transactions/list.html",transactions=transactions)
 
-@bp.route("/products")
-def product_list():
-	product = Products.query.all()
-	return render_template("products/list.html", products=product)
+@bp.route("/transactions/add", methods=["GET","POST"])
+def transactions_add():
+	if request.method == "POST":
+		
+		products = request.form.getlist("products")
+		products_qty = request.form.getlist("products_qty")
 
-@bp.route("/products/add", methods=["GET","POST"])
-def products_add():
-	if request.method == "GET":
-		return render_template("products/form_add.html")
-
-	product = Products()
-
-	product.name = request.form['name']
-	product.buying_price = request.form['price']
-	product.selling_price = request.form['sprice']
-	product.stock = request.form['stock']
-
-	db.session.add(product)
-	db.session.commit()
-
-	return redirect("/products")
-
-
-@bp.route("/products/update", methods=["GET","POST"])
-def products_edit():
-	if request.method == "GET":
-		prod_id = request.args["id"]
-		product = Products.query.filter_by(id=prod_id).first()
-		return render_template("products/form_edit.html", product=product)
-
-	prod_id = request.args["id"]
-	product = Products.query.filter_by(id=prod_id).first()
+		transactions = Transactions()
+		db.session.add(transactions)
 	
-	product.name = request.form['name']
-	product.buying_price = int(request.form['price'])
-	product.selling_price = int(request.form['sprice'])
-	product.stock = request.form['stock']
+		db.session.flush()
 
-	db.session.add(product)
-	db.session.commit()
-	return redirect("/products")
+		for i, product in enumerate(products):
+			
+			transactions_products = TransactionProducts()
+			transactions_products.transaction_id = transactions.id
+			transactions_products.product_id = int(product)
+			transactions_products.product_qty = int(products_qty[i])
+			result = db.session.query(Products).filter(Products.id == product).all()
+			db.session.add(transactions_products)
+			db.session.flush()
 
-@bp.route("/products/delete", methods=["GET"])
-def product_delete():
-	prod_id = request.args["id"]
-	product = Products.query.filter_by(id=prod_id).first()
-	if product:
-		db.session.delete(product)
 		db.session.commit()
-		return redirect("/products")
+		return redirect("/transactions")
+	return render_template("transactions/form_add.html")
+
+@bp.route("/transactions/print/bill", methods=["GET"])
+def print_bill():
+    trans_id = request.args["transaction_id"]
+    transactions = TransactionProducts.query.filter_by(transaction_id=trans_id).all()
+    print(trans_id)
+
+    return render_template("invoices/bill.html",transactions=transactions)
