@@ -19,22 +19,30 @@
             </td>
             <td>
                 <ul>
-                {% for transaction_product in transaction.transaction_products %}
+                    {% for transaction_product in transaction.transaction_products %}
                     <li>Item name :{{ transaction_product.product.name }} | Quantity : {{ transaction_product.product_qty }} | Unit Selling Price : Rs.{{ transaction_product.product.selling_price }} | Unit Buying Price : Rs.{{ transaction_product.product.buying_price }}</li>
                     <li>Total : {{transaction_product.product_qty * transaction_product.product.selling_price}}</li>
                     <li> Profit or Loss : Rs.{{( transaction_product.product.selling_price * transaction_product.product_qty ) - (transaction_product.product.buying_price * transaction_product.product_qty)}}</li>
                     <hr>
-                {% endfor %}
+                    {% endfor %}
                 </ul>
             </td>
             <td>
                 {{ transaction.create_on }}
             </td>
             <td>
-                <button type="submit" class="btn btn-default"><a href="/transactions/print/bill?id={{ transaction.id }}" target="_blank" >Print invoice</a></button>
+                {% for transaction_product in transaction.transaction_products %}
+                {% if loop.index == 1 %}
+                  <button type="submit" class="btn btn-default">
+                    <a href="/transactions/print/bill?transaction_id={{ transaction_product.transaction_id }}" target="_blank" >Print invoice</a>
+                  </button>
+                {% endif %}
+              {% endfor %}
             </td>
         </tr>
+        
         {% endfor %}
         </tbody>
     </table>
+    
 {% endblock %}
