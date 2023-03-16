@@ -9,17 +9,23 @@
 {% block content %}
 <div class="container">
     <center>
-    <h1> KUMARI BOOKSHOOP </h1>
+    <h1> KUMARI BOOKSHOOP - Invoice </h1>
     <p> No.30, Ganegama Road, Aluthgama,<br>
         Sri Lanka <br>
         +94777450570 / +94710132681
     </p>
     <br>
     </center>
+    <p><h4><b>
+        {% for transaction in transactions %}
+        {% if loop.index == 1 %}
+        Transaction id : {{ transaction.transaction_id }}
+        {% endif %}
+        {% endfor %}
+    </b></h4></p>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Transaction ID</th>
                 <th>Items Names</th>
                 <th>Quantity</th>
                 <th>Selling Price</th>
@@ -27,9 +33,9 @@
             </tr>
         </thead>
         <tbody>
+            {% for transaction_product in transactions %}
             <tr>
-                {% for transaction_product in transaction_products %}
-                <td>{{ transaction_product.trasaction_id}}</td>
+                
                 <td>
                    {{ transaction_product.product.name }}
                 </td>
@@ -46,13 +52,34 @@
                 <td>
                    {{transaction_product.product_qty * transaction_product.product.selling_price}}
                 </td>
-                {% endfor %}
+              
             </tr>
-            
+            {% endfor %}
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Grand Total Amount:</td>
+                <td> 
+                    <input class="form-control col-md-1" name="total" id="tot" type="text" placeholder="  ">
+                </td>
+            </tr>
+        </tfoot>
     </table>
     <center>
         <p><h3>Thank you & come again..</h3></p>
     </center>
     </div>
+
+    <script>
+        // Get all the "Total Price" cells in the table
+        const totalCells = document.querySelectorAll('table tbody tr td:last-child');
+
+        // Sum up the values in the "Total Price" column
+        const totalAmount = Array.from(totalCells)
+        .map(cell => parseFloat(cell.textContent))
+        .reduce((sum, amount) => sum + amount, 0);
+
+        // Set the total amount as the value of the "tot" input field
+        document.getElementById('tot').value = totalAmount.toFixed(2);
+    </script>
     {% endblock %}
