@@ -63,10 +63,10 @@ CREATE TABLE `transactions` (
 
 DROP TABLE IF EXISTS `privilage`;
 CREATE TABLE `privilage` (
-  `holderId` int(11) NOT NULL AUTO_INCREMENT,
-  `holderName` varchar(45) NOT NULL,
+  `register_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`holderId`)
+  PRIMARY KEY (`register_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dump completed on 2023-03-09 20:18:30
