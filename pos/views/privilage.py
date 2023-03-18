@@ -1,42 +1,49 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, redirect, url_for, request, session
+from werkzeug.security import generate_password_hash, check_password_hash
 from pos.models.privilage import Privilage
 from pos.models import db
 
-bp = Blueprint("privilage",__name__)
+bp = Blueprint('privilage', __name__)
 
-@bp.route("/")
 def index():
-	return redirect("/privilage")
+        if 'username' in session:
+            return f"Logged in as {session['username']}"
+        return 'You are not logged in'
 
-@bp.route('/privilage/login', methods=['GET', 'POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
-    form = request.form
-    for account in Privilage.query.all():
-        if form['holderName'] == account['holderName'] and form['holderName'] == account['holderName']:
-            return redirect('base.html')
-    context = {
-        'error': 'Invalid username or password.'
-    }
-    return render_template('landingpage.html', **context)
+    if request.method == 'POST':
+        username = request.form["username"]
+        password = request.form['password']
+    
+        credentials = Privilage.query.filter_by(username=username).first()
 
+        if credentials:
+            if check_password_hash(credentials.password, password):
+                session['username'] = username
+                print(username)
+                return redirect('/transactions/add')
 
-@bp.route('/privilage/signup', methods=['GET', 'POST'])
-def signup():
-    context = {}
-    form = request.form
-    for account in Privilage:
-        if form['holderName'] == account['holderName']:
-            context['error'] = 'Username already exists'
-            return render_template('landingpage.html', **context)
-    if form['holderName'] is None:
-        context['error'] = 'Invalid username'
-        return render_template('landingpage.html', **context)
-    if form['password'] is None:
-        context['error'] = 'Invalid password'
-        return render_template('landingpage.html', **context)
-    Privilage.append({
-        'holderId': int(form['holderID']),
-        'holderName': form['holderName'],
-        'password': form['password']
-    })
-    return redirect('base.html')
+        return redirect('/login')
+        
+
+    return render_template('landingpage.html')
+
+@bp.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        privilage = Privilage()
+
+        privilage.username = request.form['username']
+        privilage.password = request.form['password']
+
+        db.session.add(privilage)
+        db.session.commit()
+        return redirect("/transactions/add")
+    return render_template('landingpage.html')
+
+@bp.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/login')
+
