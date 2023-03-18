@@ -39,7 +39,7 @@ def transactions_add():
 
 @bp.route("/transactions/print/bill", methods=["GET"])
 def print_bill():
-    transaction_id = request.args["id"]
-    transactions = TransactionProducts.query.filter_by(id=transaction_id).first()
+    trans_id = request.args["transaction_id"]
+    transactions = TransactionProducts.query.filter_by(transaction_id=trans_id).all()
 
     return render_template("invoices/bill.html",transactions=transactions)
