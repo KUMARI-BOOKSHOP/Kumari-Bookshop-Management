@@ -20,8 +20,9 @@ def login():
 
         if credentials is not None:
             return redirect('/transactions/add')
-        
-        return redirect('/login')
+        else:
+            print("Ivalid credentials")
+            return redirect('/login')
         
 
     return render_template('landingpage.html')
@@ -43,4 +44,5 @@ def register():
 def logout():
     session.pop('username', None)
     return redirect('/login')
+
 
