@@ -43,6 +43,12 @@
 ```sh
         $ run python application.py
 ```
+
+### Sales prediction notebook and plot
+```sh
+https://www.kaggle.com/code/sahannimesha/kumari-bookshop-sahan/
+```
+
 ---
 <h4 align="center"><b> © 2023 KUMARI BOOKSHOP MANAGEMNET SYSTEM ~Sahan Nimesha~</b>  
 </h4>
