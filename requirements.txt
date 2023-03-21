@@ -12,6 +12,8 @@ six
 SQLAlchemy
 Werkzeug
 pymysql
+selenium
+pytest
 # numpy
 # pandas
 # seaborn
