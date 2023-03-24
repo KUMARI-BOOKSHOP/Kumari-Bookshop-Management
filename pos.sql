@@ -5,6 +5,7 @@ USE `pos`;
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `productId` varchar(10) NOT NULL,
   `name` varchar(45) NOT NULL,
   `buying_price` int(11) NOT NULL,
   `selling_price` int(11) NOT NULL,
@@ -69,6 +70,6 @@ CREATE TABLE `privilage` (
   PRIMARY KEY (`register_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dump completed on 2023-03-09 20:18:30
+-- Dump completed on 2023-03-25 04:19:10
 
 --© 2023 KUMARI BOOKSHOP #Sahan Nimesha 
