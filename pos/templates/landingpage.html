@@ -64,24 +64,29 @@
                 <div class="mb-5 border p-5 right">
                     <form method="post" action="/login">
                         <div class="mb-3">
-                            <label for="loginUsername" class="form-label" style="margin-left: 100px; font-size: 25pt;"><b>LOGIN HERE !</b>
-                                </label><br>
+                            <label for="loginUsername" class="form-label"
+                                style="margin-left: 100px; font-size: 25pt;"><b>LOGIN HERE !</b>
+                            </label><br>
                             <label for="loginUsername" class="form-label">USERNAME</label>
                             <input type="text" class="form-control" id="loginUsername"
-                                aria-describedby="loginUsernameHelp" name="username" placeholder="nic">
+                                aria-describedby="loginUsernameHelp" name="username"
+                                placeholder="Enter your nic number">
 
                         </div>
                         <div class="mb-3">
                             <label for="loginPassword" class="form-label">PASSWORD</label>
-                            <input type="password" class="form-control" id="loginPassword" name="password"
+                            <input type="password" class="form-control" id="loginPassword" name="Enter your password"
                                 placeholder="password">
                         </div>
-                        <div >
-                            <button type="submit" class="btn btn-warning" style="margin-left: 150px;">SIGN IN</button><br><br>
-                            <label for="loginUsername" class="form-label" style="margin-left: 110px; font-size: 12pt;">Don't have an account ?
+                        <div>
+                            <button type="submit" class="btn btn-warning" style="margin-left: 150px;">SIGN
+                                IN</button><br><br>
+                            <label for="loginUsername" class="form-label"
+                                style="margin-left: 110px; font-size: 12pt;">Don't have an account ?
                             </label><br>
-                            <button type="submit" class="btn btn-warning" style="margin-left: 150px;"><a href="#register"
-                                    style="color: black; text-decoration: none;">SIGN UP</a></button><br>
+                            <button type="submit" class="btn btn-warning" style="margin-left: 150px;"><a
+                                    href="#register" style="color: black; text-decoration: none;">SIGN
+                                    UP</a></button><br>
                         </div>
                     </form>
                 </div>
@@ -110,15 +115,26 @@
                 <div class="mb-5 border p-5 right">
                     <form method="post" action="/register">
                         <div class="mb-3">
-                            <label for="loginUsername" class="form-label" style="margin-left: 100px; font-size: 25pt;"><b>JOIN WITH US</b></label><br>
+                            <label for="loginUsername" class="form-label"
+                                style="margin-left: 100px; font-size: 25pt;"><b>JOIN WITH US</b></label><br>
+                            <label for="fullName" class="form-label">FULL NAME</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName"
+                                aria-describedby="fullNameHelp" placeholder="Enter your full name ">
+                        </div>
+                        <div>
                             <label for="signupUsername" class="form-label">USERNAME</label>
                             <input type="text" class="form-control" id="signupUsername" name="username"
-                                aria-describedby="signupUsernameHelp" placeholder="nic">
+                                aria-describedby="signupUsernameHelp" placeholder="Enter your nic number">
+                        </div>
+                        <div>
+                            <label for="contact" class="form-label">CONTACT </label>
+                            <input type="text" class="form-control" id="contact" name="contact"
+                                aria-describedby="contactHelp" placeholder="Enter your contact number">
                         </div>
                         <div class="mb-3">
                             <label for="signupPassword" class="form-label">PASSWORD</label>
                             <input type="password" class="form-control" name="password" id="signupPassword"
-                                placeholder="password">
+                                placeholder="Enter your password">
                         </div>
                         <button type="submit" class="btn btn-warning">SIGN UP</button>
                     </form>
