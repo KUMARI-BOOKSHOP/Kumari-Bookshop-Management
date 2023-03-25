@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestKUMARIBOOKSHOPPaymentOperation():
+class TestKUMARIBOOKSOPPlaceorder():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
@@ -25,8 +25,8 @@ class TestKUMARIBOOKSHOPPaymentOperation():
     if len(wh_now) > len(wh_then):
       return set(wh_now).difference(set(wh_then)).pop()
   
-  def test_kUMARIBOOKSHOPPaymentOperation(self):
-    # Test name: KUMARI BOOKSHOP Payment Operation
+  def test_kUMARIBOOKSOPPlaceorder(self):
+    # Test name: KUMARI BOOKSOP Place order
     # Step # | name | target | value
     # 1 | open | http://127.0.0.1:5000/transactions/add | 
     self.driver.get("http://127.0.0.1:5000/transactions/add")
@@ -34,84 +34,82 @@ class TestKUMARIBOOKSHOPPaymentOperation():
     self.driver.set_window_size(1382, 744)
     # 3 | click | id=productCode | 
     self.driver.find_element(By.ID, "productCode").click()
-    # 4 | type | id=productCode | 1
-    self.driver.find_element(By.ID, "productCode").send_keys("1")
+    # 4 | type | id=productCode | 2
+    self.driver.find_element(By.ID, "productCode").send_keys("2")
     # 5 | click | id=sellingPrice | 
     self.driver.find_element(By.ID, "sellingPrice").click()
     # 6 | type | id=sellingPrice | 20
     self.driver.find_element(By.ID, "sellingPrice").send_keys("20")
-    # 7 | click | css=tr:nth-child(2) #sellingPrice | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #sellingPrice").click()
-    # 8 | type | css=tr:nth-child(2) #sellingPrice | 25
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #sellingPrice").send_keys("25")
-    # 9 | click | css=tr:nth-child(3) #sellingPrice | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #sellingPrice").click()
-    # 10 | type | css=tr:nth-child(3) #sellingPrice | 25
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #sellingPrice").send_keys("25")
-    # 11 | click | css=tr:nth-child(4) #sellingPrice | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #sellingPrice").click()
-    # 12 | type | css=tr:nth-child(4) #sellingPrice | 20
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #sellingPrice").send_keys("20")
-    # 13 | click | css=tr:nth-child(2) #productCode | 
+    # 7 | click | id=qty | 
+    self.driver.find_element(By.ID, "qty").click()
+    # 8 | type | id=qty | 10
+    self.driver.find_element(By.ID, "qty").send_keys("10")
+    # 9 | click | css=tr:nth-child(2) #productCode | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #productCode").click()
-    # 14 | type | css=tr:nth-child(2) #productCode | 2
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #productCode").send_keys("2")
+    # 10 | type | css=tr:nth-child(2) #productCode | 3
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #productCode").send_keys("3")
+    # 11 | click | css=tr:nth-child(2) #sellingPrice | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #sellingPrice").click()
+    # 12 | type | css=tr:nth-child(2) #sellingPrice | 20
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #sellingPrice").send_keys("20")
+    # 13 | click | css=tr:nth-child(2) #qty | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #qty").click()
+    # 14 | type | css=tr:nth-child(2) #qty | 5
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #qty").send_keys("5")
     # 15 | click | css=tr:nth-child(3) #productCode | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #productCode").click()
-    # 16 | type | css=tr:nth-child(3) #productCode | 3
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #productCode").send_keys("3")
-    # 17 | click | css=tr:nth-child(4) #productCode | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #productCode").click()
-    # 18 | type | css=tr:nth-child(4) #productCode | 4
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #productCode").send_keys("4")
-    # 19 | click | id=qty | 
-    self.driver.find_element(By.ID, "qty").click()
-    # 20 | type | id=qty | 1
-    self.driver.find_element(By.ID, "qty").send_keys("1")
-    # 21 | click | css=tr:nth-child(2) #qty | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #qty").click()
-    # 22 | type | css=tr:nth-child(2) #qty | 10
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) #qty").send_keys("10")
-    # 23 | click | css=tr:nth-child(3) #qty | 
+    # 16 | type | css=tr:nth-child(3) #productCode | 4
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #productCode").send_keys("4")
+    # 17 | click | css=tr:nth-child(3) #sellingPrice | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #sellingPrice").click()
+    # 18 | type | css=tr:nth-child(3) #sellingPrice | 20
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #sellingPrice").send_keys("20")
+    # 19 | click | css=tr:nth-child(3) #qty | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #qty").click()
-    # 24 | type | css=tr:nth-child(3) #qty | 5
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #qty").send_keys("5")
+    # 20 | type | css=tr:nth-child(3) #qty | 3
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) #qty").send_keys("3")
+    # 21 | click | css=tr:nth-child(4) #productCode | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #productCode").click()
+    # 22 | type | css=tr:nth-child(4) #productCode | 5
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #productCode").send_keys("5")
+    # 23 | click | css=tr:nth-child(4) #sellingPrice | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #sellingPrice").click()
+    # 24 | type | css=tr:nth-child(4) #sellingPrice | 20
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #sellingPrice").send_keys("20")
     # 25 | click | css=tr:nth-child(4) #qty | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #qty").click()
-    # 26 | type | css=tr:nth-child(4) #qty | 2
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #qty").send_keys("2")
+    # 26 | type | css=tr:nth-child(4) #qty | 10
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) #qty").send_keys("10")
     # 27 | click | css=div:nth-child(2) > .btn:nth-child(2) | 
     self.driver.find_element(By.CSS_SELECTOR, "div:nth-child(2) > .btn:nth-child(2)").click()
     # 28 | click | css=div:nth-child(2) > .btn:nth-child(1) | 
     self.driver.find_element(By.CSS_SELECTOR, "div:nth-child(2) > .btn:nth-child(1)").click()
     # 29 | click | css=tr:nth-child(5) #productCode | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #productCode").click()
-    # 30 | type | css=tr:nth-child(5) #productCode | 5
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #productCode").send_keys("5")
+    # 30 | type | css=tr:nth-child(5) #productCode | 6
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #productCode").send_keys("6")
     # 31 | click | css=tr:nth-child(5) #sellingPrice | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #sellingPrice").click()
-    # 32 | type | css=tr:nth-child(5) #sellingPrice | 75
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #sellingPrice").send_keys("75")
-    # 33 | type | css=tr:nth-child(5) #sellingPrice | 20
+    # 32 | type | css=tr:nth-child(5) #sellingPrice | 20
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #sellingPrice").send_keys("20")
-    # 34 | click | css=tr:nth-child(5) #qty | 
+    # 33 | click | css=tr:nth-child(5) #qty | 
     self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #qty").click()
-    # 35 | type | css=tr:nth-child(5) #qty | 3
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #qty").send_keys("3")
-    # 36 | click | css=div:nth-child(2) > .btn:nth-child(2) | 
+    # 34 | type | css=tr:nth-child(5) #qty | 10
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) #qty").send_keys("10")
+    # 35 | click | css=div:nth-child(2) > .btn:nth-child(2) | 
     self.driver.find_element(By.CSS_SELECTOR, "div:nth-child(2) > .btn:nth-child(2)").click()
-    # 37 | click | id=cashRec | 
+    # 36 | click | id=cashRec | 
     self.driver.find_element(By.ID, "cashRec").click()
-    # 38 | type | id=cashRec | 500.00
-    self.driver.find_element(By.ID, "cashRec").send_keys("500.00")
-    # 39 | click | css=div:nth-child(5) > .btn:nth-child(2) | 
+    # 37 | type | id=cashRec | 800.00
+    self.driver.find_element(By.ID, "cashRec").send_keys("800.00")
+    # 38 | click | css=div:nth-child(5) > .btn:nth-child(2) | 
     self.driver.find_element(By.CSS_SELECTOR, "div:nth-child(5) > .btn:nth-child(2)").click()
-    # 40 | click | css=tr:nth-child(54) a | 
+    # 39 | click | css=div:nth-child(5) > .btn:nth-child(1) | 
+    self.driver.find_element(By.CSS_SELECTOR, "div:nth-child(5) > .btn:nth-child(1)").click()
+    # 40 | click | css=tr:nth-child(2) a | 
     self.vars["window_handles"] = self.driver.window_handles
-    # 41 | selectWindow | handle=${win9058} | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(54) a").click()
-    # 42 | click | css=tfoot > tr | 
-    self.vars["win9058"] = self.wait_for_window(2000)
-    self.driver.switch_to.window(self.vars["win9058"])
-    self.driver.find_element(By.CSS_SELECTOR, "tfoot > tr").click()
+    # 41 | selectWindow | handle=${win2942} | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) a").click()
+    self.vars["win2942"] = self.wait_for_window(2000)
+    self.driver.switch_to.window(self.vars["win2942"])
   
