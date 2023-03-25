@@ -136,3 +136,7 @@ CREATE TABLE `transactions`  (
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- Dump completed on 2023-03-09 20:18:30
+
+--© 2023 KUMARI BOOKSHOP #Sahan Nimesha 
