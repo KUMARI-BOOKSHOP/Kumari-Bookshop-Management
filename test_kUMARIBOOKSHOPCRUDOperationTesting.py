@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestKUMARIBOOKSHOPCRUDOperationTesting():
+class TestKUMARIBOOKSHOPCRUD():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
@@ -18,147 +18,157 @@ class TestKUMARIBOOKSHOPCRUDOperationTesting():
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_kUMARIBOOKSHOPCRUDOperationTesting(self):
-    # Test name: KUMARI BOOKSHOP CRUD Operation Testing
+  def test_kUMARIBOOKSHOPCRUD(self):
+    # Test name: KUMARI BOOKSHOP CRUD
     # Step # | name | target | value
-    # 1 | open | /products | 
-    self.driver.get("http://127.0.0.1:5000/products")
+    # 1 | open | /login | 
+    self.driver.get("http://127.0.0.1:5000/transactions/add/login")
     # 2 | setWindowSize | 1382x744 | 
     self.driver.set_window_size(1382, 744)
-    # 3 | click | linkText=ADD PRODUCT | 
+    # 3 | click | css=a | 
+    self.driver.find_element(By.CSS_SELECTOR, "a").click()
+    # 4 | click | id=fullName | 
+    self.driver.find_element(By.ID, "fullName").click()
+    # 5 | type | id=fullName | Sahan Niemsha
+    self.driver.find_element(By.ID, "fullName").send_keys("Sahan Niemsha")
+    # 6 | click | id=signupUsername | 
+    self.driver.find_element(By.ID, "signupUsername").click()
+    # 7 | type | id=signupUsername | 123456789
+    self.driver.find_element(By.ID, "signupUsername").send_keys("123456789")
+    # 8 | click | id=contact | 
+    self.driver.find_element(By.ID, "contact").click()
+    # 9 | type | id=contact | 0710132681
+    self.driver.find_element(By.ID, "contact").send_keys("0710132681")
+    # 10 | click | id=signupPassword | 
+    self.driver.find_element(By.ID, "signupPassword").click()
+    # 11 | type | id=signupPassword | 123456
+    self.driver.find_element(By.ID, "signupPassword").send_keys("123456")
+    # 12 | click | css=.btn:nth-child(5) | 
+    self.driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(5)").click()
+    # 13 | click | linkText=ADD PRODUCT | 
     self.driver.find_element(By.LINK_TEXT, "ADD PRODUCT").click()
-    # 4 | click | id=name | 
+    # 14 | click | id=code | 
+    self.driver.find_element(By.ID, "code").click()
+    # 15 | type | id=code | AEL
+    self.driver.find_element(By.ID, "code").send_keys("AEL")
+    # 16 | click | id=name | 
     self.driver.find_element(By.ID, "name").click()
-    # 5 | type | id=name | Colour Pen
-    self.driver.find_element(By.ID, "name").send_keys("Colour Pen")
-    # 6 | click | id=price | 
+    # 17 | type | id=name | Atlas Eraser Large
+    self.driver.find_element(By.ID, "name").send_keys("Atlas Eraser Large")
+    # 18 | click | id=price | 
     self.driver.find_element(By.ID, "price").click()
-    # 7 | type | id=price | 10
-    self.driver.find_element(By.ID, "price").send_keys("10")
-    # 8 | click | id=sprice | 
-    self.driver.find_element(By.ID, "sprice").click()
-    # 9 | type | id=sprice | 25
-    self.driver.find_element(By.ID, "sprice").send_keys("25")
-    # 10 | click | id=stock | 
-    self.driver.find_element(By.ID, "stock").click()
-    # 11 | type | id=stock | 100
-    self.driver.find_element(By.ID, "stock").send_keys("100")
-    # 12 | click | css=.btn-default | 
-    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 13 | click | css=tr:nth-child(9) button:nth-child(1) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(9) button:nth-child(1) > a").click()
-    # 14 | click | id=price | 
-    self.driver.find_element(By.ID, "price").click()
-    # 15 | type | id=price | 15
+    # 19 | type | id=price | 15
     self.driver.find_element(By.ID, "price").send_keys("15")
-    # 16 | click | css=.btn-default | 
+    # 20 | click | id=sprice | 
+    self.driver.find_element(By.ID, "sprice").click()
+    # 21 | type | id=sprice | 35
+    self.driver.find_element(By.ID, "sprice").send_keys("35")
+    # 22 | click | id=stock | 
+    self.driver.find_element(By.ID, "stock").click()
+    # 23 | type | id=stock | 100
+    self.driver.find_element(By.ID, "stock").send_keys("100")
+    # 24 | click | css=.btn-default | 
     self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 17 | click | css=tr:nth-child(9) button:nth-child(2) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(9) button:nth-child(2) > a").click()
-    # 18 | click | linkText=ADD CUSTOMER | 
+    # 25 | click | css=tr:nth-child(29) button:nth-child(1) > a | 
+    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(29) button:nth-child(1) > a").click()
+    # 26 | click | id=price | 
+    self.driver.find_element(By.ID, "price").click()
+    # 27 | type | id=price | 20
+    self.driver.find_element(By.ID, "price").send_keys("20")
+    # 28 | click | css=.btn-default | 
+    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
+    # 29 | click | linkText=ADD CUSTOMER | 
     self.driver.find_element(By.LINK_TEXT, "ADD CUSTOMER").click()
-    # 19 | click | id=name | 
+    # 30 | click | id=name | 
     self.driver.find_element(By.ID, "name").click()
-    # 20 | type | id=name | Test Customer
-    self.driver.find_element(By.ID, "name").send_keys("Test Customer")
-    # 21 | click | id=nic | 
+    # 31 | type | id=name | Pamod Bulathgama
+    self.driver.find_element(By.ID, "name").send_keys("Pamod Bulathgama")
+    # 32 | click | id=nic | 
     self.driver.find_element(By.ID, "nic").click()
-    # 22 | type | id=nic | 987456321
-    self.driver.find_element(By.ID, "nic").send_keys("987456321")
-    # 23 | click | id=adderss | 
-    self.driver.find_element(By.ID, "adderss").click()
-    # 24 | type | id=adderss | No 30 Ganegama Road
-    self.driver.find_element(By.ID, "adderss").send_keys("No 30 Ganegama Road")
-    # 25 | click | id=contact | 
-    self.driver.find_element(By.ID, "contact").click()
-    # 26 | type | id=contact | 0710132681
-    self.driver.find_element(By.ID, "contact").send_keys("0710132681")
-    # 27 | click | css=.btn-default | 
-    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 28 | click | css=tr:nth-child(5) button:nth-child(1) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) button:nth-child(1) > a").click()
-    # 29 | click | css=.container | 
-    self.driver.find_element(By.CSS_SELECTOR, ".container").click()
-    # 30 | type | id=address | Ganegama Road
-    self.driver.find_element(By.ID, "address").send_keys("Ganegama Road")
-    # 31 | click | css=.btn-default | 
-    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 32 | click | css=tr:nth-child(5) button:nth-child(2) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(5) button:nth-child(2) > a").click()
-    # 33 | click | linkText=ADD EMPLOYEE | 
-    self.driver.find_element(By.LINK_TEXT, "ADD EMPLOYEE").click()
-    # 34 | click | id=name | 
-    self.driver.find_element(By.ID, "name").click()
-    # 35 | type | id=name | Test employee
-    self.driver.find_element(By.ID, "name").send_keys("Test employee")
-    # 36 | click | id=nic | 
-    self.driver.find_element(By.ID, "nic").click()
-    # 37 | type | id=nic | 123456789v
-    self.driver.find_element(By.ID, "nic").send_keys("123456789v")
-    # 38 | type | id=nic | 123456789
+    # 33 | type | id=nic | 123456789
     self.driver.find_element(By.ID, "nic").send_keys("123456789")
-    # 39 | click | id=adderss | 
+    # 34 | click | id=adderss | 
     self.driver.find_element(By.ID, "adderss").click()
-    # 40 | type | id=adderss | Wennappuwa
-    self.driver.find_element(By.ID, "adderss").send_keys("Wennappuwa")
-    # 41 | click | id=contact | 
+    # 35 | type | id=adderss | Horana
+    self.driver.find_element(By.ID, "adderss").send_keys("Horana")
+    # 36 | click | id=contact | 
     self.driver.find_element(By.ID, "contact").click()
-    # 42 | type | id=contact | 0710132681
+    # 37 | type | id=contact | 0710132681
     self.driver.find_element(By.ID, "contact").send_keys("0710132681")
-    # 43 | click | css=.btn-default | 
+    # 38 | click | css=.btn-default | 
     self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 44 | click | css=tr:nth-child(2) button:nth-child(1) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) button:nth-child(1) > a").click()
-    # 45 | click | id=nic | 
+    # 39 | click | linkText=UPDATE | 
+    self.driver.find_element(By.LINK_TEXT, "UPDATE").click()
+    # 40 | click | id=address | 
+    self.driver.find_element(By.ID, "address").click()
+    # 41 | type | id=address | Ingiriya, Horana
+    self.driver.find_element(By.ID, "address").send_keys("Ingiriya, Horana")
+    # 42 | click | css=.btn-default | 
+    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
+    # 43 | click | linkText=DELETE | 
+    self.driver.find_element(By.LINK_TEXT, "DELETE").click()
+    # 44 | click | linkText=ADD EMPLOYEE | 
+    self.driver.find_element(By.LINK_TEXT, "ADD EMPLOYEE").click()
+    # 45 | click | id=name | 
+    self.driver.find_element(By.ID, "name").click()
+    # 46 | type | id=name | sahan nimesha
+    self.driver.find_element(By.ID, "name").send_keys("sahan nimesha")
+    # 47 | type | id=adderss | No 30 Ganegama Road
+    self.driver.find_element(By.ID, "adderss").send_keys("No 30 Ganegama Road")
+    # 48 | click | id=nic | 
     self.driver.find_element(By.ID, "nic").click()
-    # 46 | click | id=nic | 
+    # 49 | click | id=name | 
+    self.driver.find_element(By.ID, "name").click()
+    # 50 | click | id=name | 
+    self.driver.find_element(By.ID, "name").click()
+    # 51 | type | id=name | Sahan nimesha
+    self.driver.find_element(By.ID, "name").send_keys("Sahan nimesha")
+    # 52 | click | id=nic | 
     self.driver.find_element(By.ID, "nic").click()
-    # 47 | doubleClick | id=nic | 
+    # 53 | type | id=nic | 123456789
+    self.driver.find_element(By.ID, "nic").send_keys("123456789")
+    # 54 | click | id=contact | 
+    self.driver.find_element(By.ID, "contact").click()
+    # 55 | type | id=contact | 0710132681
+    self.driver.find_element(By.ID, "contact").send_keys("0710132681")
+    # 56 | click | css=.btn-default | 
+    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
+    # 57 | click | linkText=UPDATE | 
+    self.driver.find_element(By.LINK_TEXT, "UPDATE").click()
+    # 58 | click | id=nic | 
+    self.driver.find_element(By.ID, "nic").click()
+    # 59 | click | id=nic | 
+    self.driver.find_element(By.ID, "nic").click()
+    # 60 | doubleClick | id=nic | 
     element = self.driver.find_element(By.ID, "nic")
     actions = ActionChains(self.driver)
     actions.double_click(element).perform()
-    # 48 | type | id=nic | 195874523
-    self.driver.find_element(By.ID, "nic").send_keys("195874523")
-    # 49 | click | css=.btn-default | 
-    self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 50 | click | css=tr:nth-child(2) button:nth-child(2) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) button:nth-child(2) > a").click()
-    # 51 | click | linkText=ADD SUPPLIER | 
-    self.driver.find_element(By.LINK_TEXT, "ADD SUPPLIER").click()
-    # 52 | click | id=name | 
-    self.driver.find_element(By.ID, "name").click()
-    # 53 | type | id=name | Rathna
-    self.driver.find_element(By.ID, "name").send_keys("Rathna")
-    # 54 | click | id=proName | 
-    self.driver.find_element(By.ID, "proName").click()
-    # 55 | type | id=proName | Rathna Products
-    self.driver.find_element(By.ID, "proName").send_keys("Rathna Products")
-    # 56 | click | id=nic | 
-    self.driver.find_element(By.ID, "nic").click()
-    # 57 | type | id=nic | 123456789
-    self.driver.find_element(By.ID, "nic").send_keys("123456789")
-    # 58 | click | id=adderss | 
-    self.driver.find_element(By.ID, "adderss").click()
-    # 59 | type | id=adderss | Kaluthara
-    self.driver.find_element(By.ID, "adderss").send_keys("Kaluthara")
-    # 60 | click | id=contact | 
-    self.driver.find_element(By.ID, "contact").click()
-    # 61 | type | id=contact | 0710132681
-    self.driver.find_element(By.ID, "contact").send_keys("0710132681")
+    # 61 | type | id=nic | 987456321
+    self.driver.find_element(By.ID, "nic").send_keys("987456321")
     # 62 | click | css=.btn-default | 
     self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
-    # 63 | click | css=tr:nth-child(2) button:nth-child(1) > a | 
-    self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) button:nth-child(1) > a").click()
-    # 64 | click | id=contact | 
+    # 63 | click | linkText=ADD SUPPLIER | 
+    self.driver.find_element(By.LINK_TEXT, "ADD SUPPLIER").click()
+    # 64 | click | id=name | 
+    self.driver.find_element(By.ID, "name").click()
+    # 65 | type | id=name | Weerodaara
+    self.driver.find_element(By.ID, "name").send_keys("Weerodaara")
+    # 66 | click | id=proName | 
+    self.driver.find_element(By.ID, "proName").click()
+    # 67 | type | id=proName | Weerodara Products
+    self.driver.find_element(By.ID, "proName").send_keys("Weerodara Products")
+    # 68 | click | id=nic | 
+    self.driver.find_element(By.ID, "nic").click()
+    # 69 | type | id=nic | 123456789
+    self.driver.find_element(By.ID, "nic").send_keys("123456789")
+    # 70 | click | id=adderss | 
+    self.driver.find_element(By.ID, "adderss").click()
+    # 71 | type | id=adderss | Colombo 02
+    self.driver.find_element(By.ID, "adderss").send_keys("Colombo 02")
+    # 72 | click | id=contact | 
     self.driver.find_element(By.ID, "contact").click()
-    # 65 | click | id=contact | 
-    self.driver.find_element(By.ID, "contact").click()
-    # 66 | doubleClick | id=contact | 
-    element = self.driver.find_element(By.ID, "contact")
-    actions = ActionChains(self.driver)
-    actions.double_click(element).perform()
-    # 67 | type | id=contact | 0775586063
-    self.driver.find_element(By.ID, "contact").send_keys("0775586063")
-    # 68 | click | css=.btn-default | 
+    # 73 | type | id=contact | 0710132681
+    self.driver.find_element(By.ID, "contact").send_keys("0710132681")
+    # 74 | click | css=.btn-default | 
     self.driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
   
