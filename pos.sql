@@ -1,76 +1,17 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : LOCAL
- Source Server Type    : MySQL
- Source Server Version : 80030
- Source Host           : localhost:3306
- Source Schema         : pos
-
- Target Server Type    : MySQL
- Target Server Version : 80030
- File Encoding         : 65001
-
- Date: 25/03/2023 06:27:24
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for customers
--- ----------------------------
-DROP TABLE IF EXISTS `customers`;
-CREATE TABLE `customers`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nic` int(0) NOT NULL,
-  `address` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `contact` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for emploees
--- ----------------------------
-DROP TABLE IF EXISTS `emploees`;
-CREATE TABLE `emploees`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nic` int(0) NOT NULL,
-  `address` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `contact` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for privilage
--- ----------------------------
-DROP TABLE IF EXISTS `privilage`;
-CREATE TABLE `privilage`  (
-  `register_id` int(0) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `password` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`register_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for products
--- ----------------------------
+DROP DATABASE IF EXISTS `pos`;
+CREATE DATABASE `pos`;
+USE `pos`;
 DROP TABLE IF EXISTS `products`;
-CREATE TABLE `products`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `productId` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `name` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `buying_price` int(0) NOT NULL,
-  `selling_price` int(0) NOT NULL,
-  `stock` int(0) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_code` varchar(10) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `buying_price` int(11) NOT NULL,
+  `selling_price` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Records of products
--- ----------------------------
 INSERT INTO `products` VALUES (2, 'ABuP01', 'Atlas Blue Pen', 10, 20, 100);
 INSERT INTO `products` VALUES (3, 'ABaP01', 'Atlas Black Pen', 10, 20, 100);
 INSERT INTO `products` VALUES (4, 'ARP01', 'Atlas Red pen', 10, 20, 100);
@@ -99,44 +40,63 @@ INSERT INTO `products` VALUES (26, 'NBP01', 'Nataraj Blue Pen', 10, 20, 100);
 INSERT INTO `products` VALUES (27, 'ABuP02', 'Atlas Blue Pen', 15, 25, 50);
 INSERT INTO `products` VALUES (28, 'AOP01', 'Atlas Orange Pen', 10, 20, 100);
 
--- ----------------------------
--- Table structure for suppliers
--- ----------------------------
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `nic` int(20) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `contact` varchar(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `emploees`;
+CREATE TABLE `emploees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `nic` int(21) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `contact` varchar(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 DROP TABLE IF EXISTS `suppliers`;
-CREATE TABLE `suppliers`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `proName` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `nic` int(0) NOT NULL,
-  `address` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `contact` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `proName` varchar(45) NOT NULL,
+  `nic` int(21) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `contact` varchar(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Table structure for transaction_products
--- ----------------------------
+
 DROP TABLE IF EXISTS `transaction_products`;
-CREATE TABLE `transaction_products`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `transaction_id` int(0) NOT NULL,
-  `product_id` int(0) NOT NULL,
-  `product_qty` int(0) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `transaction_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transaction_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_qty` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Table structure for transactions
--- ----------------------------
 DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE `transactions`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `create_on` datetime(0) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_on` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-SET FOREIGN_KEY_CHECKS = 1;
+DROP TABLE IF EXISTS `privilage`;
+CREATE TABLE `privilage` (
+  `holderId` int(11) NOT NULL AUTO_INCREMENT,
+  `holderName` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`holderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dump completed on 2023-03-09 20:18:30
+-- Dump completed on 2023-03-25 07:18:30
 
---© 2023 KUMARI BOOKSHOP #Sahan Nimesha 
+--© 2023 KUMARI BOOKSHOP #Sahan Nimesha
