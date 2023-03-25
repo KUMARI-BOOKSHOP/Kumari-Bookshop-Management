@@ -19,7 +19,7 @@ def products_add():
 		return render_template("products/form_add.html")
 
 	product = Products()
-	product.productId = request.form['code']
+	product.product_code = request.form['code']
 	product.name = request.form['name']
 	product.buying_price = request.form['price']
 	product.selling_price = request.form['sprice']
@@ -41,7 +41,7 @@ def products_edit():
 	prod_id = request.args["id"]
 	product = Products.query.filter_by(id=prod_id).first()
 	
-	product.productId = request.form['code']
+	product.product_code = request.form['code']
 	product.name = request.form['name']
 	product.buying_price = int(request.form['price'])
 	product.selling_price = int(request.form['sprice'])
